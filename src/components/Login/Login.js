@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const initialLoginCredentials = {
-	email: "",
+	username: "",
 	password: "",
 };
 
@@ -18,12 +19,13 @@ const Login = () => {
 
 	return (
 		<div>
+			Login Form
 			<form>
 				<input
 					type="text"
-					name="email"
-					value={loginCredentials.email}
-					placeholder="enter your email"
+					name="username"
+					value={loginCredentials.username}
+					placeholder="enter your username"
 					onChange={handleChange}
 				/>
 				<input
@@ -37,6 +39,10 @@ const Login = () => {
 				<button> Im an owner </button>
 				<button> Im a renter </button>
 			</form>
+			<div>
+				dont have an account?
+				<Link to="/signup">sign up</Link>
+			</div>
 		</div>
 	);
 };
