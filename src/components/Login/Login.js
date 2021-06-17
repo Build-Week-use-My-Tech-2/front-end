@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const initialLoginCredentials = {
 	username: "",
@@ -10,11 +10,20 @@ const Login = () => {
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
 	);
+
 	const handleChange = (e) => {
 		setLoginCredentials({
 			...loginCredentials,
 			[e.target.name]: e.target.value,
 		});
+	};
+
+	const history = useHistory();
+	const ownerSubmit = (e) => {
+		history.push("/owner");
+	};
+	const renterSubmit = (e) => {
+		history.push("/renter");
 	};
 
 	return (
@@ -36,8 +45,8 @@ const Login = () => {
 					onChange={handleChange}
 				/>
 
-				<button> Im an owner </button>
-				<button> Im a renter </button>
+				<button onClick={ownerSubmit}> Im an owner </button>
+				<button onClick={renterSubmit}> Im a renter </button>
 			</form>
 			<div>
 				dont have an account?
