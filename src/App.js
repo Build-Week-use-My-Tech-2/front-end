@@ -6,15 +6,19 @@ import Owner from "./components/Owner/Owner";
 import Renter from "./components/Renter/Renter";
 import CreateRent from "./components/CreateRent/CreateRent";
 import EditRent from "./components/EditRent/EditRent";
+import RentedItems from "./components/RentedItems/RentedItems";
+import Homepage from "./components/Homepage/Homepage";
 
 function App() {
 	return (
 		<div className="App">
 			<Switch>
-				<Route exact path="/" component={Login} />
+				<Route exact path="/" component={Homepage} />
+				<Route exact path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
 				<Route path="/owner" component={Owner} />
 				<Route path="/renter" component={Renter} />
+				<Route path="/rentedItems" component={RentedItems} />
 				<Route path="/createRent" component={CreateRent} />
 				<Route path="/editRent" component={EditRent} />
 			</Switch>
