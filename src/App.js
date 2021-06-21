@@ -8,6 +8,7 @@ import CreateRent from "./components/CreateRent/CreateRent";
 import EditRent from "./components/EditRent/EditRent";
 import RentedItems from "./components/RentedItems/RentedItems";
 import Homepage from "./components/Homepage/Homepage";
+import Footer from "./components/Footer/Footer"
 
 function App() {
 	return (
@@ -22,7 +23,13 @@ function App() {
 				<Route path="/createRent" component={CreateRent} />
 				<Route path="/editRent" component={EditRent} />
 			</Switch>
+
+			<Footer />
 		</div>
+
+	
+
+		
 	);
 }
 
