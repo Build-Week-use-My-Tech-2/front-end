@@ -9,10 +9,13 @@ import EditRent from "./components/EditRent/EditRent";
 import RentedItems from "./components/RentedItems/RentedItems";
 import Homepage from "./components/Homepage/Homepage";
 import Footer from "./components/Footer/Footer"
+import Header from "./components/Header/Header"
 
 function App() {
 	return (
 		<div className="App">
+			<Header />
+
 			<Switch>
 				<Route exact path="/" component={Homepage} />
 				<Route exact path="/login" component={Login} />
