@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -10,6 +9,8 @@ import RentedItems from "./components/RentedItems/RentedItems";
 import Homepage from "./components/Homepage/Homepage";
 import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
+
+import "./App.css";
 
 function App() {
 	return (
@@ -29,10 +30,6 @@ function App() {
 
 			<Footer />
 		</div>
-
-	
-
-		
 	);
 }
 
