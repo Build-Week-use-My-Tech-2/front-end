@@ -2,6 +2,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import CreateRent from './CreateRent'
 
-test('renders without errors', () => {
+test('renders without errors', async () => {
     render(<CreateRent />)
 });
