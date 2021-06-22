@@ -17,16 +17,21 @@ const Homepage = () => {
 
 	return (
 		<div>
-			This is a homepage. All the items for rent listed by owners are shown
-			here.
-			<div>
+			<h1>
+			Use My Tech
+			</h1>
+			<h2>
+			Browse our available Inventory:
+			</h2>
+			<div class="wrapper">
 				{itemsForRent.map((item) => {
-					return (
+					return (					
 						<img
 							key={item.id}
 							alt="electronic item"
 							src={item.download_url}
 							height="200px"
+							width="200px"
 						/>
 					);
 				})}
