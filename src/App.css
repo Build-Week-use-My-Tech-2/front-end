@@ -12,6 +12,30 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+/* testing my skillz */
+h4 {
+  margin-bottom: 50px;
+  font-size: 24px;
+  color: red;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex > div {
+  margin: 0 1rem 2rem 1rem;
+  text-align: center;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+/* end your skillz here */
 
 .App-header {
   background-color: #282c34;
