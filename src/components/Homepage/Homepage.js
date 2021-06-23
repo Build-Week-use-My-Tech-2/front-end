@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Typography } from '@material-ui/core'
 
 const Homepage = () => {
 	const [itemsForRent, setItemsForRent] = useState([]);
@@ -17,12 +18,12 @@ const Homepage = () => {
 
 	return (
 		<div>
-			<h1>
+			<Typography variant="h2">
 			Use My Tech
-			</h1>
-			<h2>
+			</Typography>
+			<Typography variant="subtitle1">
 			Browse our available Inventory:
-			</h2>
+			</Typography>
 			<div class="wrapper">
 				{itemsForRent.map((item) => {
 					return (					
