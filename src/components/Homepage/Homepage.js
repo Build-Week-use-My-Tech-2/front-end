@@ -18,14 +18,14 @@ const Homepage = () => {
 	return (
 		<div>
 			<h1>
-			Use My Tech
+				Use My Tech
 			</h1>
 			<h2>
-			Browse our available Inventory:
+				Browse our available Inventory:
 			</h2>
-			<div class="wrapper">
+			<div className="wrapper">
 				{itemsForRent.map((item) => {
-					return (					
+					return (
 						<img
 							key={item.id}
 							alt="electronic item"
