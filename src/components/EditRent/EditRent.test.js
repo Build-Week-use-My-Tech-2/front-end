@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Header from './Header';
+import EditRent from './EditRent';
 
 test('renders without error', async () => {
-    render(<Header />)
+    render(<EditRent />)
 });
