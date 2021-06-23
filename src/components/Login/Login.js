@@ -36,7 +36,6 @@ const Login = () => {
 			
 			<form>
 				<TextField
-					id="standard-basic"
 					type="text"
 					name="username"
 					value={loginCredentials.username}
@@ -51,7 +50,6 @@ const Login = () => {
 					  }}
 				/>
 				<TextField
-					id="standard-basic"
 					type="text"
 					name="password"
 					value={loginCredentials.password}

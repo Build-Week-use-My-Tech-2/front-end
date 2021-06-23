@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Typography, TextField, Button, InputAdornment } from "@material-ui/core";
+import { AccountCircle } from '@material-ui/icons'
 
 const initialFormValues = {
 	username: "",
@@ -18,27 +20,39 @@ const Signup = () => {
 
 	return (
 		<div>
-			{/* signup form */}
+			<Typography variant="h4">
+			Sign Up!
+			</Typography>
 			<form>
-				<input
+				<TextField
 					type="text"
 					name="username"
 					value={formValues.username}
 					placeholder="enter your username"
 					onChange={handleChange}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position="start">
+								<AccountCircle />
+							</InputAdornment>
+						)
+					}}
 				/>
-				<input
+				<TextField
 					type="text"
 					name="password"
 					value={formValues.password}
 					placeholder="enter your password"
 					onChange={handleChange}
 				/>
-				<button> Im an owner </button>
-				<button> Im a renter </button>
+				<Button variant="outlined"> Im an owner </Button>
+				<Button variant="outlined"> Im a renter </Button>
 
 				<div>
+					<Typography variant="subtitle1">
 					already have an account?
+					</Typography>
+					
 					<Link to="/">log in</Link>
 				</div>
 			</form>
