@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
 import { Link } from "react-router-dom";
 // import axios from "axios";
 import styled from "styled-components";
@@ -30,8 +30,17 @@ const StyledP = styled.p`
 	align-items: center;
 `
 const Homepage = () => {
-	const [itemsForRent, setItemsForRent] = useState([]);
-
+	const [users, setUsers] = React.useState([]);
+	const f = async () => {
+		const res = await fetch("https://reqres.in/api/users/");
+		const json = await res.json();
+		setUsers(json.data);
+	};
+	React.useEffect(() => {
+		f();
+	}, []);
+	// const Homepage = () => {
+	// const [itemsForRent, setItemsForRent] = useState([]);
 	// useEffect(() => {
 	// 	axios
 	// 		.get("https://picsum.photos/v2/list")
@@ -46,7 +55,14 @@ const Homepage = () => {
 		<StyledWrapper>
 			<h1>Use My Tech</h1>
 			<h2>Browse our available Inventory:</h2>
-			<div className="wrapper">
+			<div>
+				{/* Login button here */}
+				<Link to="/login">
+					<button> Login </button>
+				</Link>
+			</div>
+
+			{/* <div className="wrapper">
 				{itemsForRent.map((item) => {
 					return (
 						<img
@@ -59,13 +75,8 @@ const Homepage = () => {
 						/>
 					);
 				})}
-			</div>
-			<div>
-				{/* Login button here */}
-				<Link to="/login">
-					<button> Login </button>
-				</Link>
-			</div>
+			</div> */}
+
 			<StyledBanner>
 				<StyledPics src="images/pic02.jpg" />
 				<StyledP>Tired of paying premiums for expensive electornic equipment? Rent it instead!
@@ -86,6 +97,24 @@ const Homepage = () => {
 				</StyledP>
 
 			</StyledBanner>
+
+			<div className="App">
+				<h4>This is for testing purposes!</h4>
+				<div className="flex">
+					{users.length &&
+						users.map((user) => {
+							return (
+								<div key={user.id}>
+									<p>
+										<strong>{user.first_name}</strong>
+									</p>
+									<p>{user.email}</p>
+									<img key={user.avatar} src={user.avatar} alt="" />
+								</div>
+							);
+						})}
+				</div>
+			</div>
 		</StyledWrapper>
 	);
 };
