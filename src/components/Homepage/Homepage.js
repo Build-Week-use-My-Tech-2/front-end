@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledWrapper = styled.section `
+max-width: 1200px;
+margin: auto;
+`
 
 const Homepage = () => {
 	const [itemsForRent, setItemsForRent] = useState([]);
@@ -16,7 +22,7 @@ const Homepage = () => {
 	}, []);
 
 	return (
-		<div>
+		<StyledWrapper>
 			<h1>
 				Use My Tech
 			</h1>
@@ -42,7 +48,7 @@ const Homepage = () => {
 					<button> Login </button>
 				</Link>
 			</div>
-		</div>
+		</StyledWrapper>
 	);
 };
 
