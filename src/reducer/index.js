@@ -3,8 +3,8 @@ import {
 	SIGNUP,
 	LOGIN,
 	FETCHING_USER_SUCCESS,
-	// SET_OWNER,
-	// SET_RENTER,
+	SET_OWNER,
+	SET_RENTER,
 	// UPDATE_USER_SUCCESS,
 	// CREATE_ITEM_SUCCESS,
 	// UPDATE_ITEM_SUCCESS,
@@ -50,18 +50,18 @@ export const reducer = (state = initialState, action) => {
 				fetchError: null,
 				isLoading: false,
 			};
-		// case SET_OWNER:
-		// 	return {
-		// 		...state,
-		// 		owner: true,
-		// 		renter: false,
-		// 	};
-		// case SET_RENTER:
-		// 	return {
-		// 		...state,
-		// 		renter: true,
-		// 		owner: false,
-		// 	};
+		case SET_OWNER:
+			return {
+				...state,
+				owner: true,
+				renter: false,
+			};
+		case SET_RENTER:
+			return {
+				...state,
+				owner: false,
+				renter: true,
+			};
 		default:
 			return state;
 	}

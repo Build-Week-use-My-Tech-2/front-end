@@ -11,10 +11,9 @@ export const DELETE_ITEM_SUCCESS = "DELETE_ITEM_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERROR = "CLEAR_ERROR";
-
-//
 export const SET_OWNER = "SET_OWNER";
 export const SET_RENTER = "SET RENTER";
+//
 
 export const signup = (signupCredentials) => (dispatch) => {
 	console.log("signup credentials", signupCredentials);
@@ -42,12 +41,9 @@ export const signup = (signupCredentials) => (dispatch) => {
 
 export const login = (loginCredentials) => (dispatch) => {
 	console.log("login credentials", loginCredentials);
-
 	dispatch({
 		type: START_FETCHING,
 	});
-
-	// LOGIN
 	axiosWithAuth()
 		.post("https://reqres.in/api/login", loginCredentials)
 		.then((response) => {

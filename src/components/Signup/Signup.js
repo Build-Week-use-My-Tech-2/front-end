@@ -31,11 +31,11 @@ const Signup = (props) => {
 
 	const ownerSubmit = (e) => {
 		signup(signupCredentials);
-		setOwner(true);
-		setRenter(false);
+		setOwner();
 	};
 	const renterSubmit = (e) => {
 		signup(signupCredentials);
+		setRenter();
 	};
 
 	return (
