@@ -164,29 +164,29 @@ export const getUser = (id) => (dispatch) => {
 // 		});
 // };
 
-// // export const deleteItem = (item) => (dispatch) => {
-// //     dispatch({
-// //         type: START_FETCHING
-// //     });
-// //     const id = localStorage.getItem('userId');
-// //     const data = {
-// //         item_id: item.id
-// //     }
-// //     axiosWithAuth().delete(`https://reqres.in/api/users/`, { data: data })
-// //         .then((response) => {
-// //             dispatch({
-// //                 type: DELETE_ITEM_SUCCESS,
-// //                 payload: item
-// //             });
-// //         })
-// //         .catch((error) => {
-// //             console.log(error);
-// //             dispatch({
-// //                 type: FETCH_ERROR,
-// //                 payload: error.message
-// //             });
-// //         })
-// // };
+// export const deleteItem = (item) => (dispatch) => {
+//     dispatch({
+//         type: START_FETCHING
+//     });
+//     const id = localStorage.getItem('userId');
+//     const data = {
+//         item_id: item.id
+//     }
+//     axiosWithAuth().delete(`https://reqres.in/api/users/`, { data: data })
+//         .then((response) => {
+//             dispatch({
+//                 type: DELETE_ITEM_SUCCESS,
+//                 payload: item
+//             });
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//             dispatch({
+//                 type: FETCH_ERROR,
+//                 payload: error.message
+//             });
+//         })
+// };
 
 export const logout = () => (dispatch) => {
 	localStorage.clear();
