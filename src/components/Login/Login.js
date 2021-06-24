@@ -38,7 +38,7 @@ const Login = (props) => {
 	};
 	const renterSubmit = (e) => {
 		login(loginCredentials);
-		// history.push("/renter");
+		history.push("/renter");
 	};
 
 	return (

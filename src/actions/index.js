@@ -16,7 +16,7 @@ export const CLEAR_ERROR = "CLEAR_ERROR";
 export const SET_OWNER = "SET_OWNER";
 export const SET_RENTER = "SET RENTER";
 
-export const signup = (signupCredentials, history) => (dispatch) => {
+export const signup = (signupCredentials) => (dispatch) => {
 	console.log("signup credentials", signupCredentials);
 	dispatch({
 		type: START_FETCHING,
@@ -191,14 +191,14 @@ export const clearError = () => (dispatch) => {
 	});
 };
 
-export const setOwner = () => (dispatch) => {
-	dispatch({
-		type: SET_OWNER,
-	});
-};
+// export const setOwner = () => (dispatch) => {
+// 	dispatch({
+// 		type: SET_OWNER,
+// 	});
+// };
 
-export const setRenter = () => (dispatch) => {
-	dispatch({
-		type: SET_RENTER,
-	});
-};
+// export const setRenter = () => (dispatch) => {
+// 	dispatch({
+// 		type: SET_RENTER,
+// 	});
+// };
