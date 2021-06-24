@@ -8,27 +8,27 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { reducer } from "./reducer";
-// import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-// const theme = createMuiTheme({
-// 	palette: {
-// 		primary: {
-// 			main: "",
-// 			light: "",
-// 			dark: "",
-// 			// contrastText: "",
-// 		},
-// 		secondary: {
-// 			main: "",
-// 			light: "",
-// 			dark: "#",
-// 			// contrastText: "",
-// 		},
-// 	},
-// 	typography: {
-// 		fontFamily: [" Tahoma "],
-// 	},
-// });
+const theme = createMuiTheme({
+	// palette: {
+	// 	primary: {
+	// 		main: "",
+	// 		light: "",
+	// 		dark: "",
+	// 		// contrastText: "",
+	// 	},
+	// 	secondary: {
+	// 		main: "",
+	// 		light: "",
+	// 		dark: "#",
+	// 		// contrastText: "",
+	// 	},
+	// },
+	typography: {
+		fontFamily: [" Tahoma "],
+	},
+});
 
 // const store = createStore(reducer);
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -36,7 +36,9 @@ const store = createStore(reducer, applyMiddleware(thunk));
 ReactDOM.render(
 	<Router>
 		<Provider store={store}>
-			<App />
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
 		</Provider>
 	</Router>,
 	document.getElementById("root"),

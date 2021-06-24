@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login, clearError } from "../../actions";
-//
 import { Link, useHistory } from "react-router-dom";
+
+//
 import {
 	Typography,
 	Button,
@@ -12,11 +13,25 @@ import {
 import { AccountCircle } from "@material-ui/icons";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { findByLabelText } from "@testing-library/react";
 
 const initialLoginCredentials = {
 	username: "",
 	password: "",
 };
+
+const useStyles = makeStyles((theme) => ({
+	container: {
+		height: "80vh",
+	},
+	form: {
+		width: "100%", // Fix IE 11 issue.
+		marginTop: theme.spacing(4),
+	},
+	textField: { marginLeft: theme.spacing(2), marginRight: theme.spacing(2) },
+}));
 
 const Login = (props) => {
 	// const { isLoading, isLoggedIn, login, clearError } = props;
@@ -25,6 +40,7 @@ const Login = (props) => {
 		initialLoginCredentials,
 	);
 	const history = useHistory();
+	const classes = useStyles();
 
 	useEffect(() => {
 		if (isLoggedIn && owner === true) {
@@ -48,48 +64,54 @@ const Login = (props) => {
 	};
 
 	return (
-		<div>
-			<Typography variant="h4">Login Form</Typography>
-
-			{isLoading && (
-				<Box display="flex" justifyContent="center" padding="20px">
-					<CircularProgress />
-				</Box>
-			)}
-
-			<form>
-				<TextField
-					type="text"
-					name="username"
-					value={loginCredentials.username}
-					placeholder="enter your username"
-					onChange={handleChange}
-					InputProps={{
-						startAdornment: (
-							<InputAdornment position="start">
-								<AccountCircle />
-							</InputAdornment>
-						),
-					}}
-				/>
-				<TextField
-					type="text"
-					name="password"
-					value={loginCredentials.password}
-					placeholder="enter your password"
-					onChange={handleChange}
-				/>
-
-				<Button variant="outlined" size="small" onClick={handleSubmit}>
-					Login
-				</Button>
-			</form>
+		<Container component="main" maxWidth="lg" className={classes.container}>
 			<div>
-				<Typography variant="subtitle1">dont have an account?</Typography>
+				<Typography variant="h4">Login</Typography>
 
-				<Link to="/signup">sign up</Link>
+				{isLoading && (
+					<Box display="flex" justifyContent="center" padding="20px">
+						<CircularProgress />
+					</Box>
+				)}
+
+				<form className={classes.form}>
+					<TextField
+						className={classes.textField}
+						type="text"
+						name="username"
+						value={loginCredentials.username}
+						placeholder="Enter your email"
+						required
+						onChange={handleChange}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AccountCircle />
+								</InputAdornment>
+							),
+						}}
+					/>
+					<TextField
+						className={classes.textField}
+						type="text"
+						name="password"
+						value={loginCredentials.password}
+						required
+						placeholder="Enter your password"
+						onChange={handleChange}
+					/>
+
+					<Button variant="outlined" size="small" onClick={handleSubmit}>
+						Login
+					</Button>
+				</form>
+				<div>
+					<Typography variant="subtitle1"> Don't have an account?</Typography>
+
+					<Link to="/signup">sign up</Link>
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

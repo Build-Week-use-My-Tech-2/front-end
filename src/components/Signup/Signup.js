@@ -18,7 +18,6 @@ const initialFormValues = {
 };
 
 const Signup = (props) => {
-	// const { isLoading, isLoggedIn, login, clearError } = props;
 	const { isLoading, isLoggedIn, signup, owner, renter, setOwner, setRenter } =
 		props;
 	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
