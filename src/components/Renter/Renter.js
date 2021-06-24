@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(2),
 		backgroundColor: "#607d8b",
 	},
+	cardButton: {
+		"&:hover": {
+			backgroundColor: "#000000",
+			color: "#fff",
+		},
+	},
 	cardMedia: {
 		paddingTop: "56.25%", // 16:9
 	},
@@ -51,7 +57,7 @@ const Renter = (props) => {
 
 	return (
 		<div>
-			<h1>Renter Page</h1>
+			<h1>Items Available to Rent</h1>
 			<div>
 				<Container className={classes.cardGrid}>
 					{isLoading && (
