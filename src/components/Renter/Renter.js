@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		padding: theme.spacing(2),
-		backgroundColor: "#607d8b",
+		backgroundColor: "white",
 	},
 	cardButton: {
 		"&:hover": {
