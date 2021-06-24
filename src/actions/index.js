@@ -42,6 +42,7 @@ export const signup = (signupCredentials) => (dispatch) => {
 
 export const login = (loginCredentials) => (dispatch) => {
 	console.log("login credentials", loginCredentials);
+
 	dispatch({
 		type: START_FETCHING,
 	});
@@ -191,14 +192,14 @@ export const clearError = () => (dispatch) => {
 	});
 };
 
-// export const setOwner = () => (dispatch) => {
-// 	dispatch({
-// 		type: SET_OWNER,
-// 	});
-// };
+export const setOwner = () => (dispatch) => {
+	dispatch({
+		type: SET_OWNER,
+	});
+};
 
-// export const setRenter = () => (dispatch) => {
-// 	dispatch({
-// 		type: SET_RENTER,
-// 	});
-// };
+export const setRenter = () => (dispatch) => {
+	dispatch({
+		type: SET_RENTER,
+	});
+};

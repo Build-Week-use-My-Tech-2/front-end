@@ -19,8 +19,8 @@ export const initialState = {
 	isLoading: false,
 	isLoggedIn: false,
 	user: null,
-	owner: null,
-	renter: null,
+	owner: false,
+	renter: true,
 };
 
 export const reducer = (state = initialState, action) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { signup, clearError } from "../../actions";
+import { signup, clearError, setOwner, setRenter } from "../../actions";
 
 //
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ const initialFormValues = {
 
 const Signup = (props) => {
 	// const { isLoading, isLoggedIn, login, clearError } = props;
-	const { signup } = props;
+	const { signup, setOwner, setRenter } = props;
 	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
 
 	const handleChange = (e) => {
@@ -31,6 +31,8 @@ const Signup = (props) => {
 
 	const ownerSubmit = (e) => {
 		signup(signupCredentials);
+		setOwner(true);
+		setRenter(false);
 	};
 	const renterSubmit = (e) => {
 		signup(signupCredentials);
@@ -86,4 +88,9 @@ const mapStateToProps = (state) => ({
 	renter: state.renter,
 });
 
-export default connect(mapStateToProps, { signup, clearError })(Signup);
+export default connect(mapStateToProps, {
+	signup,
+	clearError,
+	setOwner,
+	setRenter,
+})(Signup);
