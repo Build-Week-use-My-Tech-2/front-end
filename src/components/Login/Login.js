@@ -10,6 +10,8 @@ import {
 	InputAdornment,
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const initialLoginCredentials = {
 	username: "",
@@ -25,9 +27,9 @@ const Login = (props) => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (isLoggedIn && owner) {
+		if (isLoggedIn && owner === true) {
 			history.push("/owner");
-		} else if (isLoggedIn && renter) {
+		} else if (isLoggedIn && renter === true) {
 			history.push("/renter");
 		}
 	}, [isLoggedIn, history]);
@@ -42,26 +44,17 @@ const Login = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(loginCredentials);
-		// fetchToken().then(() => {
-		// 	owner === true ? history.push("/owner") : history.push("/renter");
-		// });
 	};
-	const fetchToken = async () => {
-		return login(loginCredentials);
-	};
-
-	// const ownerSubmit = (e) => {
-	// 	login(loginCredentials);
-	// history.push("/owner");
-	// };
-	// const renterSubmit = (e) => {
-	// 	login(loginCredentials);
-	// 	history.push("/renter");
-	// };
 
 	return (
 		<div>
 			<Typography variant="h4">Login Form</Typography>
+
+			{isLoading && (
+				<Box display="flex" justifyContent="center" padding="20px">
+					<CircularProgress />
+				</Box>
+			)}
 
 			<form>
 				<TextField
