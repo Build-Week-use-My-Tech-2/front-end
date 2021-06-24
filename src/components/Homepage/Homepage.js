@@ -30,6 +30,26 @@ const StyledP = styled.p`
 	justify-content: center;
 	align-items: center;
 `
+
+const StyledButton = styled.button `
+	display:inline-block;
+	font:normal normal 300 1.3em 'Open Sans';
+    text-decoration:none;	
+	color:rgba(28, 190, 131, 1);
+	brackground-color:transparent;
+	border:1px solid rgba(28, 190, 131, 1);
+	border-radius:100px;
+	padding: .3em 1.2em;
+	margin:5px;		  
+	background-size: 200% 100%;	
+	background-image: linear-gradient(to right, transparent 50%, rgba(28, 190, 131, 1) 50%);
+	transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+	&:hover {
+		color:rgba(255, 255, 255, 1);
+		background-color:rgba(28, 190, 131, 1);
+		background-position: -100% 100%;
+	}
+`
 const Homepage = () => {
 	const [users, setUsers] = React.useState([]);
 	const f = async () => {
@@ -59,7 +79,7 @@ const Homepage = () => {
 			<div>
 				{/* Login button here */}
 				<Link to="/login">
-					<button> Login </button>
+					<StyledButton> Login </StyledButton>
 				</Link>
 			</div>
 
