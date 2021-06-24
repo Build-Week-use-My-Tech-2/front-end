@@ -13,11 +13,12 @@ export const LOGOUT = "LOGOUT";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 
 export const signup = (signupCredentials, history) => (dispatch) => {
+	console.log("signup credentials", signupCredentials);
 	dispatch({
 		type: START_FETCHING,
 	});
 	axiosWithAuth()
-		.post("https://reqres.in/api/users/", signupCredentials)
+		.post("https://reqres.in/api/register/", signupCredentials)
 		.then((response) => {
 			console.log("response", response);
 			localStorage.setItem("token", response.data.token);

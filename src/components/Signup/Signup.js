@@ -17,7 +17,9 @@ const initialFormValues = {
 	password: "",
 };
 
-const Signup = () => {
+const Signup = (props) => {
+	// const { isLoading, isLoggedIn, login, clearError } = props;
+	const { signup } = props;
 	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
 
 	const handleChange = (e) => {
