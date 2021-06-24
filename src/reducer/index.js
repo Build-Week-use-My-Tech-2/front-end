@@ -10,7 +10,7 @@ import {
 	// UPDATE_ITEM_SUCCESS,
 	// DELETE_ITEM_SUCCESS,
 	FETCH_ERROR,
-	// LOGOUT,
+	LOGOUT,
 	// CLEAR_ERROR,
 } from "../actions";
 
@@ -68,6 +68,8 @@ export const reducer = (state = initialState, action) => {
 				fetchError: action.payload,
 				isLoading: false,
 			};
+		case LOGOUT:
+			return initialState;
 		default:
 			return state;
 	}

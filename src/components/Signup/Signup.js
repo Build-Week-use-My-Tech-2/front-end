@@ -108,9 +108,19 @@ const Signup = (props) => {
 						Im a renter
 					</Button>
 				</form>
-				<div>
+				<div style={{ margin: "100px" }}>
 					<Typography variant="subtitle1">
 						Already have an account? <Link to="/login">Log in</Link>
+					</Typography>
+				</div>
+
+				<div>
+					<Typography variant="subtitle2">
+						Note: Due to lack of backend API, this webapp is using
+						<a href="https://reqres.in/"> Reqres </a>. This is the list of
+						defined users available for signup/login: <br />
+						email: eve.holt@reqres.in <br />
+						password: pistol
 					</Typography>
 				</div>
 			</div>
