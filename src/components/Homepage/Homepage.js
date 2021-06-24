@@ -11,6 +11,7 @@ const StyledBanner = styled.section`
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0em 4.5em;
+	justify-content: center;
 `
 const StyledPics = styled.img`
 	max-width: 20rem;
