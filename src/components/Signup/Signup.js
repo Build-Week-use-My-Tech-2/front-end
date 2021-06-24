@@ -11,6 +11,16 @@ import {
 import { AccountCircle } from "@material-ui/icons";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
+const useStyles = makeStyles((theme) => ({
+	form: {
+		width: "100%", // Fix IE 11 issue.
+		marginTop: theme.spacing(4),
+	},
+	textField: { marginLeft: theme.spacing(2), marginRight: theme.spacing(2) },
+}));
 
 const initialFormValues = {
 	username: "",
@@ -22,6 +32,7 @@ const Signup = (props) => {
 		props;
 	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
 	const history = useHistory();
+	const classes = useStyles();
 
 	useEffect(() => {
 		if (isLoggedIn && owner === true) {
@@ -49,51 +60,57 @@ const Signup = (props) => {
 	};
 
 	return (
-		<div>
-			<Typography variant="h4">Sign Up!</Typography>
+		<Container component="main" maxWidth="lg" className={classes.container}>
+			<div>
+				<Typography variant="h4">Sign Up!</Typography>
 
-			{isLoading && (
-				<Box display="flex" justifyContent="center" padding="20px">
-					<CircularProgress />
-				</Box>
-			)}
+				{isLoading && (
+					<Box display="flex" justifyContent="center" padding="20px">
+						<CircularProgress />
+					</Box>
+				)}
 
-			<form>
-				<TextField
-					type="text"
-					name="username"
-					value={signupCredentials.username}
-					placeholder="enter your username"
-					onChange={handleChange}
-					InputProps={{
-						startAdornment: (
-							<InputAdornment position="start">
-								<AccountCircle />
-							</InputAdornment>
-						),
-					}}
-				/>
-				<TextField
-					type="text"
-					name="password"
-					value={signupCredentials.password}
-					placeholder="enter your password"
-					onChange={handleChange}
-				/>
-				<Button variant="outlined" onClick={ownerSubmit}>
-					Im an owner
-				</Button>
-				<Button variant="outlined" onClick={renterSubmit}>
-					Im a renter
-				</Button>
+				<form className={classes.form}>
+					<TextField
+						className={classes.textField}
+						type="text"
+						name="username"
+						value={signupCredentials.username}
+						placeholder="enter your username"
+						onChange={handleChange}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AccountCircle />
+								</InputAdornment>
+							),
+						}}
+					/>
+					<TextField
+						className={classes.textField}
+						type="text"
+						name="password"
+						value={signupCredentials.password}
+						placeholder="enter your password"
+						onChange={handleChange}
+					/>
+					<Button variant="outlined" onClick={ownerSubmit}>
+						Im an owner
+					</Button>
+					<Button variant="outlined" onClick={renterSubmit}>
+						Im a renter
+					</Button>
 
-				<div>
-					<Typography variant="subtitle1">already have an account?</Typography>
+					<div>
+						<Typography variant="subtitle1">
+							already have an account?
+						</Typography>
 
-					<Link to="/login">log in</Link>
-				</div>
-			</form>
-		</div>
+						<Link to="/login">log in</Link>
+					</div>
+				</form>
+			</div>
+		</Container>
 	);
 };
 

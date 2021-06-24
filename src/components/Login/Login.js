@@ -24,7 +24,7 @@ const initialLoginCredentials = {
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		height: "80vh",
+		height: "100%",
 	},
 	form: {
 		width: "100%", // Fix IE 11 issue.
