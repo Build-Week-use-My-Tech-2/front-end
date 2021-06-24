@@ -71,7 +71,7 @@ const Signup = (props) => {
 				<div>
 					<Typography variant="subtitle1">already have an account?</Typography>
 
-					<Link to="/">log in</Link>
+					<Link to="/login">log in</Link>
 				</div>
 			</form>
 		</div>

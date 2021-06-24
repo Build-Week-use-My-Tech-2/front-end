@@ -12,6 +12,10 @@ export const FETCH_ERROR = "FETCH_ERROR";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 
+//
+export const SET_OWNER = "SET_OWNER";
+export const SET_RENTER = "SET RENTER";
+
 export const signup = (signupCredentials, history) => (dispatch) => {
 	console.log("signup credentials", signupCredentials);
 	dispatch({
@@ -185,5 +189,17 @@ export const logout = () => (dispatch) => {
 export const clearError = () => (dispatch) => {
 	dispatch({
 		type: CLEAR_ERROR,
+	});
+};
+
+export const setOwner = () => (dispatch) => {
+	dispatch({
+		type: SET_OWNER,
+	});
+};
+
+export const setRenter = () => (dispatch) => {
+	dispatch({
+		type: SET_RENTER,
 	});
 };

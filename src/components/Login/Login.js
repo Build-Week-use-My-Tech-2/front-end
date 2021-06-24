@@ -31,12 +31,14 @@ const Login = (props) => {
 		});
 	};
 
-	// const history = useHistory();
+	const history = useHistory();
 	const ownerSubmit = (e) => {
 		login(loginCredentials);
+		history.push("/owner");
 	};
 	const renterSubmit = (e) => {
 		login(loginCredentials);
+		history.push("/renter");
 	};
 
 	return (
