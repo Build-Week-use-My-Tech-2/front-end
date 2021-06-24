@@ -23,14 +23,12 @@ const initialLoginCredentials = {
 };
 
 const useStyles = makeStyles((theme) => ({
-	container: {
-		height: "100%",
-	},
 	form: {
 		width: "100%", // Fix IE 11 issue.
 		marginTop: theme.spacing(4),
+		marginBottom: theme.spacing(6),
 	},
-	textField: { marginLeft: theme.spacing(2), marginRight: theme.spacing(2) },
+	textField: { margin: theme.spacing(2) },
 }));
 
 const Login = (props) => {
@@ -75,40 +73,42 @@ const Login = (props) => {
 				)}
 
 				<form className={classes.form}>
-					<TextField
-						className={classes.textField}
-						type="text"
-						name="username"
-						value={loginCredentials.username}
-						placeholder="Enter your email"
-						required
-						onChange={handleChange}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AccountCircle />
-								</InputAdornment>
-							),
-						}}
-					/>
-					<TextField
-						className={classes.textField}
-						type="text"
-						name="password"
-						value={loginCredentials.password}
-						required
-						placeholder="Enter your password"
-						onChange={handleChange}
-					/>
+					<div>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="username"
+							value={loginCredentials.username}
+							placeholder="Enter your email"
+							required
+							onChange={handleChange}
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start">
+										<AccountCircle />
+									</InputAdornment>
+								),
+							}}
+						/>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="password"
+							value={loginCredentials.password}
+							required
+							placeholder="Enter your password"
+							onChange={handleChange}
+						/>
+					</div>
 
-					<Button variant="outlined" size="small" onClick={handleSubmit}>
+					<Button variant="contained" onClick={handleSubmit}>
 						Login
 					</Button>
 				</form>
 				<div>
-					<Typography variant="subtitle1"> Don't have an account?</Typography>
-
-					<Link to="/signup">sign up</Link>
+					<Typography variant="subtitle1">
+						Don't have an account? <Link to="/signup">Sign Up</Link>
+					</Typography>
 				</div>
 			</div>
 		</Container>

@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
 	form: {
 		width: "100%", // Fix IE 11 issue.
 		marginTop: theme.spacing(4),
+		marginBottom: theme.spacing(6),
 	},
-	textField: { marginLeft: theme.spacing(2), marginRight: theme.spacing(2) },
+	textField: { margin: theme.spacing(2) },
 }));
 
 const initialFormValues = {
@@ -71,44 +72,47 @@ const Signup = (props) => {
 				)}
 
 				<form className={classes.form}>
-					<TextField
-						className={classes.textField}
-						type="text"
-						name="username"
-						value={signupCredentials.username}
-						placeholder="enter your username"
-						onChange={handleChange}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AccountCircle />
-								</InputAdornment>
-							),
-						}}
-					/>
-					<TextField
-						className={classes.textField}
-						type="text"
-						name="password"
-						value={signupCredentials.password}
-						placeholder="enter your password"
-						onChange={handleChange}
-					/>
-					<Button variant="outlined" onClick={ownerSubmit}>
+					<div>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="username"
+							value={signupCredentials.username}
+							placeholder="enter your username"
+							onChange={handleChange}
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start">
+										<AccountCircle />
+									</InputAdornment>
+								),
+							}}
+						/>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="password"
+							value={signupCredentials.password}
+							placeholder="enter your password"
+							onChange={handleChange}
+						/>
+					</div>
+					<Button
+						variant="contained"
+						onClick={ownerSubmit}
+						style={{ marginRight: "10px" }}
+					>
 						Im an owner
 					</Button>
-					<Button variant="outlined" onClick={renterSubmit}>
+					<Button variant="contained" onClick={renterSubmit}>
 						Im a renter
 					</Button>
-
-					<div>
-						<Typography variant="subtitle1">
-							already have an account?
-						</Typography>
-
-						<Link to="/login">log in</Link>
-					</div>
 				</form>
+				<div>
+					<Typography variant="subtitle1">
+						Already have an account? <Link to="/login">Log in</Link>
+					</Typography>
+				</div>
 			</div>
 		</Container>
 	);
