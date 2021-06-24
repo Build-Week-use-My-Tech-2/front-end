@@ -22,16 +22,15 @@ export const signup = (signupCredentials, history) => (dispatch) => {
 		type: START_FETCHING,
 	});
 	axiosWithAuth()
-		.post("https://reqres.in/api/register/", signupCredentials)
+		.post("https://reqres.in/api/register", signupCredentials)
 		.then((response) => {
 			console.log("response", response);
 			localStorage.setItem("token", response.data.token);
-			localStorage.setItem("userId", response.data.user.id);
+			localStorage.setItem("userId", response.data.id);
 			dispatch({
 				type: SIGNUP,
-				payload: response.data.user,
+				payload: response.data,
 			});
-			history.push("/");
 		})
 		.catch((error) => {
 			dispatch({
@@ -49,7 +48,7 @@ export const login = (loginCredentials) => (dispatch) => {
 
 	// LOGIN
 	axiosWithAuth()
-		.post("https://reqres.in/api/login/", loginCredentials)
+		.post("https://reqres.in/api/login", loginCredentials)
 		.then((response) => {
 			console.log(response);
 			localStorage.setItem("token", response.data.token);

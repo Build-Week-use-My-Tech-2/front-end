@@ -54,11 +54,13 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				owner: true,
+				renter: false,
 			};
 		case SET_RENTER:
 			return {
 				...state,
 				renter: true,
+				owner: false,
 			};
 		default:
 			return state;
