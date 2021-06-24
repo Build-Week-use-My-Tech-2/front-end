@@ -38,7 +38,12 @@ export const signup = (signupCredentials) => (dispatch) => {
 			console.log(error.response.data.error);
 			dispatch({
 				type: FETCH_ERROR,
-				payload: error.response.data.error,
+				// payload: error.response.data.error,
+				payload:
+					error.response.data.error ===
+					"Note: Only defined users succeed registration"
+						? "Note: Due to lack of backend API, this webapp is using Reqres. Please signup using email eve.holt@reqres.in and password pistol"
+						: error.response.data.error,
 			});
 		});
 };

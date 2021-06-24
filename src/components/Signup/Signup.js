@@ -78,7 +78,7 @@ const Signup = (props) => {
 							type="text"
 							name="username"
 							value={signupCredentials.username}
-							placeholder="enter your username"
+							placeholder="Enter your email/username"
 							onChange={handleChange}
 							InputProps={{
 								startAdornment: (
@@ -93,7 +93,7 @@ const Signup = (props) => {
 							type="text"
 							name="password"
 							value={signupCredentials.password}
-							placeholder="enter your password"
+							placeholder="Enter your password"
 							onChange={handleChange}
 						/>
 					</div>
@@ -111,16 +111,6 @@ const Signup = (props) => {
 				<div style={{ margin: "100px" }}>
 					<Typography variant="subtitle1">
 						Already have an account? <Link to="/login">Log in</Link>
-					</Typography>
-				</div>
-
-				<div>
-					<Typography variant="subtitle2">
-						Note: Due to lack of backend API, this webapp is using
-						<a href="https://reqres.in/"> Reqres </a>. This is the list of
-						defined users available for signup/login: <br />
-						email: eve.holt@reqres.in <br />
-						password: pistol
 					</Typography>
 				</div>
 			</div>

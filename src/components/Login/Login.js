@@ -79,7 +79,7 @@ const Login = (props) => {
 							type="text"
 							name="username"
 							value={loginCredentials.username}
-							placeholder="Enter your email"
+							placeholder="Enter your email/username"
 							required
 							onChange={handleChange}
 							InputProps={{
