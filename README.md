@@ -6,10 +6,7 @@ Use My Tech Stuff: like AirBnB, but for high end electronics. Are you tired of p
 - Solves the problem by renting high end electronics without involving a business/third party involvement.
 
 Note: Our backend API is supported by [Reqres.](https://reqres.in/)
-Registration credentials:
-email: eve.holt@reqres.in
-password: pistol
 
-Login credentials:
+Signup and Login credentials:
 email: eve.holt@reqres.in
 password: cityslicka

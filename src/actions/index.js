@@ -49,6 +49,9 @@ export const login = (loginCredentials) => (dispatch) => {
 		.then((response) => {
 			console.log(response);
 			localStorage.setItem("token", response.data.token);
+			dispatch({
+				type: LOGIN,
+			});
 		})
 		.catch((error) => {
 			dispatch({

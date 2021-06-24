@@ -22,8 +22,9 @@ function App() {
 
 			<Switch>
 				<Route exact path="/" component={Homepage} />
-				<Route exact path="/login" component={Login} />
+				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
+
 				<PrivateRoute path="/owner" component={Owner} />
 				<PrivateRoute path="/renter" component={Renter} />
 				<PrivateRoute path="/rentedItems" component={RentedItems} />

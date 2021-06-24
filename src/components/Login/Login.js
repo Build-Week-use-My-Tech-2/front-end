@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login, clearError } from "../../actions";
-import axios from "axios";
-
 //
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -20,10 +18,19 @@ const initialLoginCredentials = {
 
 const Login = (props) => {
 	// const { isLoading, isLoggedIn, login, clearError } = props;
-	const { login, owner, renter } = props;
+	const { isLoading, isLoggedIn, login, owner, renter } = props;
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
 	);
+	const history = useHistory();
+
+	useEffect(() => {
+		if (isLoggedIn && owner) {
+			history.push("/owner");
+		} else if (isLoggedIn && renter) {
+			history.push("/renter");
+		}
+	}, [isLoggedIn, history]);
 
 	const handleChange = (e) => {
 		setLoginCredentials({
@@ -32,10 +39,15 @@ const Login = (props) => {
 		});
 	};
 
-	const history = useHistory();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		owner === true ? history.push("/owner") : history.push("/renter");
+		login(loginCredentials);
+		// fetchToken().then(() => {
+		// 	owner === true ? history.push("/owner") : history.push("/renter");
+		// });
+	};
+	const fetchToken = async () => {
+		return login(loginCredentials);
 	};
 
 	// const ownerSubmit = (e) => {
@@ -75,10 +87,7 @@ const Login = (props) => {
 				/>
 
 				<Button variant="outlined" size="small" onClick={handleSubmit}>
-					Owner
-				</Button>
-				<Button variant="outlined" size="small" onClick={handleSubmit}>
-					Renter
+					Login
 				</Button>
 			</form>
 			<div>
