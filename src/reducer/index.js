@@ -9,7 +9,7 @@ import {
 	// CREATE_ITEM_SUCCESS,
 	// UPDATE_ITEM_SUCCESS,
 	// DELETE_ITEM_SUCCESS,
-	// FETCH_ERROR,
+	FETCH_ERROR,
 	// LOGOUT,
 	// CLEAR_ERROR,
 } from "../actions";
@@ -61,6 +61,12 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				owner: false,
 				renter: true,
+			};
+		case FETCH_ERROR:
+			return {
+				...state,
+				fetchError: action.payload,
+				isLoading: false,
 			};
 		default:
 			return state;

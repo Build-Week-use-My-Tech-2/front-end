@@ -30,11 +30,15 @@ export const signup = (signupCredentials) => (dispatch) => {
 				type: SIGNUP,
 				payload: response.data,
 			});
+			dispatch({
+				type: LOGIN,
+			});
 		})
 		.catch((error) => {
+			console.log(error.response.data.error);
 			dispatch({
 				type: FETCH_ERROR,
-				payload: error.response.data.message,
+				payload: error.response.data.error,
 			});
 		});
 };
@@ -54,9 +58,10 @@ export const login = (loginCredentials) => (dispatch) => {
 			});
 		})
 		.catch((error) => {
+			console.log(error);
 			dispatch({
 				type: FETCH_ERROR,
-				payload: error.response.data.message,
+				payload: error.response.data.error,
 			});
 		});
 };
@@ -77,7 +82,7 @@ export const getUser = (id) => (dispatch) => {
 			console.log(error);
 			dispatch({
 				type: FETCH_ERROR,
-				payload: error.message,
+				payload: error.response.data.error,
 			});
 		});
 };

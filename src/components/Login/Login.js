@@ -32,6 +32,7 @@ const Login = (props) => {
 		} else if (isLoggedIn && renter === true) {
 			history.push("/renter");
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoggedIn, history]);
 
 	const handleChange = (e) => {

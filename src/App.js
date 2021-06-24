@@ -11,13 +11,18 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { CssBaseline } from "@material-ui/core";
 import PrivateRoute from "./utils/PrivateRoute";
+import Alert from "@material-ui/lab/Alert";
+import { connect } from "react-redux";
 
 import "./App.css";
 
-function App() {
+function App(props) {
 	return (
 		<div className="App">
 			<CssBaseline />
+
+			{props.fetchError && <Alert severity="error">{props.fetchError}</Alert>}
+
 			<Header />
 
 			<Switch>
@@ -37,4 +42,9 @@ function App() {
 	);
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	isLoading: state.isLoading,
+	fetchError: state.fetchError,
+});
+
+export default connect(mapStateToProps, {})(App);

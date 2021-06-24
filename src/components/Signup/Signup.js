@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { signup, clearError, setOwner, setRenter } from "../../actions";
-
-//
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
 	Typography,
 	TextField,
@@ -11,6 +9,8 @@ import {
 	InputAdornment,
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const initialFormValues = {
 	username: "",
@@ -19,8 +19,19 @@ const initialFormValues = {
 
 const Signup = (props) => {
 	// const { isLoading, isLoggedIn, login, clearError } = props;
-	const { signup, setOwner, setRenter } = props;
+	const { isLoading, isLoggedIn, signup, owner, renter, setOwner, setRenter } =
+		props;
 	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
+	const history = useHistory();
+
+	useEffect(() => {
+		if (isLoggedIn && owner === true) {
+			history.push("/owner");
+		} else if (isLoggedIn && renter === true) {
+			history.push("/renter");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLoggedIn, history]);
 
 	const handleChange = (e) => {
 		setSignupCredentials({
@@ -41,6 +52,13 @@ const Signup = (props) => {
 	return (
 		<div>
 			<Typography variant="h4">Sign Up!</Typography>
+
+			{isLoading && (
+				<Box display="flex" justifyContent="center" padding="20px">
+					<CircularProgress />
+				</Box>
+			)}
+
 			<form>
 				<TextField
 					type="text"
