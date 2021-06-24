@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { login, clearError } from "../../actions";
+
+//
 import { Link, useHistory } from "react-router-dom";
-import { Typography, Button, TextField, InputAdornment } from '@material-ui/core'
+import {
+	Typography,
+	Button,
+	TextField,
+	InputAdornment,
+} from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 
 const initialLoginCredentials = {
@@ -8,7 +17,9 @@ const initialLoginCredentials = {
 	password: "",
 };
 
-const Login = () => {
+const Login = (props) => {
+	// const { isLoading, isLoggedIn, login, clearError } = props;
+	const { login } = props;
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
 	);
@@ -20,20 +31,18 @@ const Login = () => {
 		});
 	};
 
-	const history = useHistory();
+	// const history = useHistory();
 	const ownerSubmit = (e) => {
-		history.push("/owner");
+		login(loginCredentials);
 	};
 	const renterSubmit = (e) => {
-		history.push("/renter");
+		login(loginCredentials);
 	};
 
 	return (
 		<div>
-			<Typography variant="h4">
-			Login Form
-			</Typography>
-			
+			<Typography variant="h4">Login Form</Typography>
+
 			<form>
 				<TextField
 					type="text"
@@ -43,11 +52,11 @@ const Login = () => {
 					onChange={handleChange}
 					InputProps={{
 						startAdornment: (
-						  <InputAdornment position="start">
-							<AccountCircle />
-						  </InputAdornment>
+							<InputAdornment position="start">
+								<AccountCircle />
+							</InputAdornment>
 						),
-					  }}
+					}}
 				/>
 				<TextField
 					type="text"
@@ -57,18 +66,28 @@ const Login = () => {
 					onChange={handleChange}
 				/>
 
-				<Button variant="outlined"  size="small" onClick={ownerSubmit}> Owner </Button>
-				<Button variant="outlined"  size="small" onClick={renterSubmit}> Renter </Button>
+				<Button variant="outlined" size="small" onClick={ownerSubmit}>
+					Owner
+				</Button>
+				<Button variant="outlined" size="small" onClick={renterSubmit}>
+					Renter
+				</Button>
 			</form>
 			<div>
-				<Typography variant="subtitle1">
-				dont have an account?
-				</Typography>
-			
+				<Typography variant="subtitle1">dont have an account?</Typography>
+
 				<Link to="/signup">sign up</Link>
 			</div>
 		</div>
 	);
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+	isLoading: state.isLoading,
+	isLoggedIn: state.isLoggedIn,
+	user: state.user,
+	owner: state.owner,
+	renter: state.renter,
+});
+
+export default connect(mapStateToProps, { login, clearError })(Login);

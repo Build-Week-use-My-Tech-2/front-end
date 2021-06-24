@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { signup, clearError } from "../../actions";
+
+//
 import { Link } from "react-router-dom";
-import { Typography, TextField, Button, InputAdornment } from "@material-ui/core";
-import { AccountCircle } from '@material-ui/icons'
+import {
+	Typography,
+	TextField,
+	Button,
+	InputAdornment,
+} from "@material-ui/core";
+import { AccountCircle } from "@material-ui/icons";
 
 const initialFormValues = {
 	username: "",
@@ -9,25 +18,30 @@ const initialFormValues = {
 };
 
 const Signup = () => {
-	const [formValues, setFormValues] = useState(initialFormValues);
+	const [signupCredentials, setSignupCredentials] = useState(initialFormValues);
 
 	const handleChange = (e) => {
-		setFormValues({
-			...formValues,
+		setSignupCredentials({
+			...signupCredentials,
 			[e.target.name]: e.target.value,
 		});
 	};
 
+	const ownerSubmit = (e) => {
+		signup(signupCredentials);
+	};
+	const renterSubmit = (e) => {
+		signup(signupCredentials);
+	};
+
 	return (
 		<div>
-			<Typography variant="h4">
-			Sign Up!
-			</Typography>
+			<Typography variant="h4">Sign Up!</Typography>
 			<form>
 				<TextField
 					type="text"
 					name="username"
-					value={formValues.username}
+					value={signupCredentials.username}
 					placeholder="enter your username"
 					onChange={handleChange}
 					InputProps={{
@@ -35,24 +49,26 @@ const Signup = () => {
 							<InputAdornment position="start">
 								<AccountCircle />
 							</InputAdornment>
-						)
+						),
 					}}
 				/>
 				<TextField
 					type="text"
 					name="password"
-					value={formValues.password}
+					value={signupCredentials.password}
 					placeholder="enter your password"
 					onChange={handleChange}
 				/>
-				<Button variant="outlined"> Im an owner </Button>
-				<Button variant="outlined"> Im a renter </Button>
+				<Button variant="outlined" onClick={ownerSubmit}>
+					Im an owner
+				</Button>
+				<Button variant="outlined" onClick={renterSubmit}>
+					Im a renter
+				</Button>
 
 				<div>
-					<Typography variant="subtitle1">
-					already have an account?
-					</Typography>
-					
+					<Typography variant="subtitle1">already have an account?</Typography>
+
 					<Link to="/">log in</Link>
 				</div>
 			</form>
@@ -60,4 +76,12 @@ const Signup = () => {
 	);
 };
 
-export default Signup;
+const mapStateToProps = (state) => ({
+	isLoading: state.isLoading,
+	isLoggedIn: state.isLoggedIn,
+	user: state.user,
+	owner: state.owner,
+	renter: state.renter,
+});
+
+export default connect(mapStateToProps, { signup, clearError })(Signup);
