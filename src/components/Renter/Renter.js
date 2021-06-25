@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
 
 //
 import Button from "@material-ui/core/Button";
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Renter = (props) => {
 	const [gadgets, setGadgets] = useState([]);
-	const { isLoading, user } = props;
+	const { isLoading } = props;
 	const classes = useStyles();
 
 	useEffect(() => {
@@ -88,7 +87,6 @@ const Renter = (props) => {
 											<Button
 												className={classes.cardButton}
 												variant="contained"
-												size="small"
 											>
 												Rent this item
 											</Button>

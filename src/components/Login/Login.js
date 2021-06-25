@@ -15,7 +15,6 @@ import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { findByLabelText } from "@testing-library/react";
 
 const initialLoginCredentials = {
 	username: "",
@@ -78,7 +77,7 @@ const Login = (props) => {
 							type="text"
 							name="username"
 							value={loginCredentials.username}
-							placeholder="Enter your email/username"
+							placeholder="Enter email/username"
 							required
 							onChange={handleChange}
 							InputProps={{
@@ -95,7 +94,7 @@ const Login = (props) => {
 							name="password"
 							value={loginCredentials.password}
 							required
-							placeholder="Enter your password"
+							placeholder="Enter password"
 							onChange={handleChange}
 						/>
 					</div>

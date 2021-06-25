@@ -78,7 +78,7 @@ const Signup = (props) => {
 							type="text"
 							name="username"
 							value={signupCredentials.username}
-							placeholder="Enter your email/username"
+							placeholder="Enter email/username"
 							onChange={handleChange}
 							InputProps={{
 								startAdornment: (
@@ -93,7 +93,7 @@ const Signup = (props) => {
 							type="text"
 							name="password"
 							value={signupCredentials.password}
-							placeholder="Enter your password"
+							placeholder="Enter password"
 							onChange={handleChange}
 						/>
 					</div>
