@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
-	const { isLoading, isLoggedIn, login, owner, renter, setOwner, setRenter } =
+	const { isLoading, isLoggedIn, login, owner, renter } =
 		props;
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
