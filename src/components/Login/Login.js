@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { login, setOwner, setRenter } from "../../actions";
 import { Link, useHistory } from "react-router-dom";
+
+//
+import {
+	Typography,
+	Button,
+	TextField,
+	InputAdornment,
+} from "@material-ui/core";
+import { AccountCircle } from "@material-ui/icons";
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 const initialLoginCredentials = {
 	username: "",
 	password: "",
 };
 
-const Login = () => {
+const useStyles = makeStyles((theme) => ({
+	form: {
+		width: "100%", // Fix IE 11 issue.
+		marginTop: theme.spacing(4),
+		marginBottom: theme.spacing(6),
+	},
+	textField: { margin: theme.spacing(2) },
+}));
+
+const Login = (props) => {
+	const { isLoading, isLoggedIn, login, owner, renter, setOwner, setRenter } =
+		props;
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
 	);
+	const history = useHistory();
+	const classes = useStyles();
+
+	useEffect(() => {
+		if (isLoggedIn && owner === true) {
+			history.push("/owner");
+		} else if (isLoggedIn && renter === true) {
+			history.push("/renter");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLoggedIn, history]);
 
 	const handleChange = (e) => {
 		setLoginCredentials({
@@ -18,42 +55,84 @@ const Login = () => {
 		});
 	};
 
-	const history = useHistory();
-	const ownerSubmit = (e) => {
-		history.push("/owner");
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		login(loginCredentials);
 	};
-	const renterSubmit = (e) => {
-		history.push("/renter");
-	};
+
+	// const ownerSubmit = (e) => {
+	// 	login(loginCredentials);
+	// 	setOwner();
+	// };
+	// const renterSubmit = (e) => {
+	// 	login(loginCredentials);
+	// 	setRenter();
+	// };
 
 	return (
-		<div>
-			Login Form
-			<form>
-				<input
-					type="text"
-					name="username"
-					value={loginCredentials.username}
-					placeholder="enter your username"
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="password"
-					value={loginCredentials.password}
-					placeholder="enter your password"
-					onChange={handleChange}
-				/>
-
-				<button onClick={ownerSubmit}> Im an owner </button>
-				<button onClick={renterSubmit}> Im a renter </button>
-			</form>
+		<Container component="main" maxWidth="lg" className={classes.container}>
 			<div>
-				dont have an account?
-				<Link to="/signup">sign up</Link>
+				<Typography variant="h4">Login</Typography>
+
+				{isLoading && (
+					<Box display="flex" justifyContent="center" padding="20px">
+						<CircularProgress />
+					</Box>
+				)}
+
+				<form className={classes.form}>
+					<div>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="username"
+							value={loginCredentials.username}
+							placeholder="Enter email/username"
+							required
+							onChange={handleChange}
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start">
+										<AccountCircle />
+									</InputAdornment>
+								),
+							}}
+						/>
+						<TextField
+							className={classes.textField}
+							type="text"
+							name="password"
+							value={loginCredentials.password}
+							required
+							placeholder="Enter password"
+							onChange={handleChange}
+						/>
+					</div>
+
+					<Button variant="contained" onClick={handleSubmit}>
+						Login
+					</Button>
+				</form>
+				<div>
+					<Typography variant="subtitle1">
+						Don't have an account? <Link to="/signup">Sign Up</Link>
+					</Typography>
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+	isLoading: state.isLoading,
+	isLoggedIn: state.isLoggedIn,
+	user: state.user,
+	owner: state.owner,
+	renter: state.renter,
+});
+
+export default connect(mapStateToProps, {
+	login,
+	setOwner,
+	setRenter,
+})(Login);
