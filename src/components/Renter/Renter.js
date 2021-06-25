@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { connect } from "react-redux";
 import data from "../data";
 
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		padding: theme.spacing(2),
-		backgroundColor: "white",
+		backgroundColor: "#819ca9",
 	},
 	cardButton: {
 		"&:hover": {
@@ -49,14 +48,6 @@ const Renter = (props) => {
 	const [gadgets, setGadgets] = useState([]);
 	const { isLoading } = props;
 	const classes = useStyles();
-
-	// useEffect(() => {
-	// 	console.log(initialData);
-	// 	axios.get("https://picsum.photos/v2/list").then((res) => {
-	// 		console.log(res.data);
-	// 		setGadgets(res.data);
-	// 	});
-	// }, []);
 
 	useEffect(() => {
 		setGadgets(initialData);
@@ -83,7 +74,7 @@ const Renter = (props) => {
 												{card.item} <br />
 											</Typography>
 											<Typography>
-												<b>Description:</b>Description: {card.description}
+												<b>Description:</b> {card.description}
 												<br />
 												<b>Cost to Rent:</b> {card.costToRent}
 											</Typography>
