@@ -6,20 +6,24 @@ const StyledHeader = styled.header`
 `;
 const StyledHeading = styled.h1`
 	display: flex;
+	align-items: center;
+	flex-direction: column-reverse;
 	font-family: trebuchet ms;
 	color: black;
-	font-size: 2em;
-	height: 3em;
-	width: 3.3em;
-	padding: 0.2em;
-	margin-left: 2em;
+	font-size: 1.4rem;
+	line-height: 1.6rem;
+	height: 4.8rem;
+	width: 4.8rem;
+	padding: 0rem 1rem 0rem 1rem;
+	margin-left: 2rem;
 	background: white;
 `;
 const StyledNav = styled.nav`
 	display: flex;
+	flex-flow: wrap;
 	justify-content: space-evenly;
-	font-size: 1.5em;
-	margin-left: 28%;
+	font-size: 1.2rem;
+	margin-left: 50%;
 `;
 
 const Header = () => {
