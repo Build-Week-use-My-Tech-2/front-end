@@ -1,20 +1,75 @@
-const TESTING = "TESTING";
+import {
+	START_FETCHING,
+	SIGNUP,
+	LOGIN,
+	FETCHING_USER_SUCCESS,
+	SET_OWNER,
+	SET_RENTER,
+	// UPDATE_USER_SUCCESS,
+	// CREATE_ITEM_SUCCESS,
+	// UPDATE_ITEM_SUCCESS,
+	// DELETE_ITEM_SUCCESS,
+	FETCH_ERROR,
+	LOGOUT,
+	// CLEAR_ERROR,
+} from "../actions";
 
 export const initialState = {
 	isTesting: false,
-	// isLoading: false,
-	// isLoggedIn: false,
-	// owner: null,
-	// renter: null,
+	isLoading: false,
+	isLoggedIn: false,
+	user: null,
+	owner: false,
+	renter: true,
 };
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case TESTING:
+		case START_FETCHING:
 			return {
 				...state,
-				isTesting: true,
+				isLoading: true,
 			};
+		case LOGIN:
+			return {
+				...state,
+				isLoggedIn: true,
+				fetchError: null,
+				isLoading: false,
+			};
+		case SIGNUP:
+			return {
+				...state,
+				user: action.payload,
+				isLoading: false,
+			};
+		case FETCHING_USER_SUCCESS:
+			return {
+				...state,
+				user: action.payload,
+				fetchError: null,
+				isLoading: false,
+			};
+		case SET_OWNER:
+			return {
+				...state,
+				owner: true,
+				renter: false,
+			};
+		case SET_RENTER:
+			return {
+				...state,
+				owner: false,
+				renter: true,
+			};
+		case FETCH_ERROR:
+			return {
+				...state,
+				fetchError: action.payload,
+				isLoading: false,
+			};
+		case LOGOUT:
+			return initialState;
 		default:
 			return state;
 	}
