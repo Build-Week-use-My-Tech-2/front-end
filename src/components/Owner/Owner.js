@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
+import data from "../data";
 
 //
 import Button from "@material-ui/core/Button";
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		padding: theme.spacing(2),
-		backgroundColor: "white",
+		backgroundColor: "#819ca9",
 	},
 	cardButton: {
 		"&:hover": {
@@ -42,21 +43,28 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 	},
 }));
+const initialData = data;
 
-const Owner = (props) => {
+const Renter = (props) => {
 	const [gadgets, setGadgets] = useState([]);
 	const { isLoading } = props;
 	const classes = useStyles();
 
+	// useEffect(() => {
+	// 	console.log(initialData);
+	// 	axios.get("https://picsum.photos/v2/list").then((res) => {
+	// 		console.log(res.data);
+	// 		setGadgets(res.data);
+	// 	});
+	// }, []);
+
 	useEffect(() => {
-		axios
-			.get("https://picsum.photos/v2/list")
-			.then((res) => setGadgets(res.data));
+		setGadgets(initialData);
 	}, []);
 
 	return (
 		<div>
-			<h1>My Items For Rent</h1>
+			<h1>My Items for Rent</h1>
 			<div>
 				<Container className={classes.cardGrid}>
 					{isLoading && (
@@ -69,25 +77,21 @@ const Owner = (props) => {
 							{gadgets.map((card, index) => (
 								<Grid item key={index} xs={12} sm={6} md={4}>
 									<Card className={classes.card}>
-										<CardMedia
-											className={classes.cardMedia}
-											image={card.download_url}
-										/>
+										<CardMedia className={classes.cardMedia} image={card.url} />
 										<CardContent className={classes.cardContent}>
 											<Typography gutterBottom variant="h6" component="h6">
-												{card.url} <br />
+												{card.item} <br />
 											</Typography>
 											<Typography>
-												Description: {card.description} <br />
-												Owner: {card.author} <br />
-												Cost to Rent: {card.id}
+												<b>Description:</b>Description: {card.description}
+												<br />
+												<b>Cost to Rent:</b> {card.costToRent}
 											</Typography>
 										</CardContent>
 										<CardActions>
 											<Button
 												className={classes.cardButton}
 												variant="contained"
-												size="small"
 											>
 												Delete this item
 											</Button>
@@ -112,4 +116,4 @@ const mapStateToProps = (state) => ({
 	isLoading: state.isLoading,
 	user: state.user,
 });
-export default connect(mapStateToProps, {})(Owner);
+export default connect(mapStateToProps, {})(Renter);
