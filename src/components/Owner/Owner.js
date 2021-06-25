@@ -83,7 +83,7 @@ const Renter = (props) => {
 												{card.item} <br />
 											</Typography>
 											<Typography>
-												<b>Description:</b>Description: {card.description}
+												<b>Description:</b> {card.description}
 												<br />
 												<b>Cost to Rent:</b> {card.costToRent}
 											</Typography>
