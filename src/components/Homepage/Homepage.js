@@ -11,12 +11,16 @@ const StyledBanner = styled.section`
 	flex-wrap: wrap;
 	margin: 0em 4.5em;
 	justify-content: center;
+	align-items: center;
 `
 const StyledPics = styled.img`
-	max-width: 20rem;
+	max-width: 23rem;
 	height: 100%;
 	border-radius: 15%;
 	margin: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `
 const StyledP = styled.p`
 	margin: 2em;
