@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import styled from "styled-components";
 
 const StyledWrapper = styled.section`
@@ -31,7 +30,7 @@ const StyledP = styled.p`
 	align-items: center;
 `
 
-const StyledButton = styled.button `
+const StyledButton = styled.button`
 	display:inline-block;
 	font:normal normal 300 1.3em 'Open Sans';
     text-decoration:none;	
@@ -51,52 +50,15 @@ const StyledButton = styled.button `
 	}
 `
 const Homepage = () => {
-	const [users, setUsers] = React.useState([]);
-	const f = async () => {
-		const res = await fetch("https://reqres.in/api/users/");
-		const json = await res.json();
-		setUsers(json.data);
-	};
-	React.useEffect(() => {
-		f();
-	}, []);
-	// const Homepage = () => {
-	// const [itemsForRent, setItemsForRent] = useState([]);
-	// useEffect(() => {
-	// 	axios
-	// 		.get("https://picsum.photos/v2/list")
-	// 		.then((res) => {
-	// 			console.log(res.data);
-	// 			setItemsForRent(res.data);
-	// 		})
-	// 		.catch((err) => console.log(err));
-	// }, []);
-
 	return (
 		<StyledWrapper>
 			<h1>Use My Tech</h1>
 			<h2>Browse our available Inventory:</h2>
 			<div>
-				{/* Login button here */}
 				<Link to="/login">
 					<StyledButton> Login </StyledButton>
 				</Link>
 			</div>
-
-			{/* <div className="wrapper">
-				{itemsForRent.map((item) => {
-					return (
-						<img
-							id='inventory'
-							key={item.id}
-							alt="electronic item"
-							src={item.download_url}
-							height="200px"
-							width="200px"
-						/>
-					);
-				})}
-			</div> */}
 
 			<StyledBanner>
 				<StyledPics src="images/pic02.jpg" />
@@ -116,26 +78,7 @@ const Homepage = () => {
 					have a college party you want to entertain? With this bad boy,
 					you can be making music in no time.
 				</StyledP>
-
 			</StyledBanner>
-
-			<div className="App">
-				<h4>This is for testing purposes!</h4>
-				<div className="flex">
-					{users.length &&
-						users.map((user) => {
-							return (
-								<div key={user.id}>
-									<p>
-										<strong>{user.first_name}</strong>
-									</p>
-									<p>{user.email}</p>
-									<img key={user.avatar} src={user.avatar} alt="" />
-								</div>
-							);
-						})}
-				</div>
-			</div>
 		</StyledWrapper>
 	);
 };
