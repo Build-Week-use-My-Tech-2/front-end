@@ -14,7 +14,7 @@ const StyledBanner = styled.section`
 	align-items: center;
 `
 const StyledPics = styled.img`
-	max-width: 23rem;
+	max-width: 25rem;
 	height: 100%;
 	border-radius: 15%;
 	margin: 2em;
