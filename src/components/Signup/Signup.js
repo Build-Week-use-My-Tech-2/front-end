@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { signup, clearError, setOwner, setRenter } from "../../actions";
+import { signup, setOwner, setRenter } from "../../actions";
 import { Link, useHistory } from "react-router-dom";
 import {
 	Typography,
@@ -128,7 +128,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	signup,
-	clearError,
 	setOwner,
 	setRenter,
 })(Signup);

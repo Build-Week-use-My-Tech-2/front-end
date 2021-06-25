@@ -42,7 +42,7 @@ export const signup = (signupCredentials) => (dispatch) => {
 				payload:
 					error.response.data.error ===
 					"Note: Only defined users succeed registration"
-						? "Note: Due to lack of backend API, this webapp is using Reqres. Please signup using email eve.holt@reqres.in and password pistol"
+						? "Note: Due to lack of backend API, this webapp uses Reqres instead. Please signup using email 'eve.holt@reqres.in' and password 'pistol'"
 						: error.response.data.error,
 			});
 		});
