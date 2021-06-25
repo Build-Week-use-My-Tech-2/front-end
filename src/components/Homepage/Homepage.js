@@ -72,24 +72,6 @@ const Homepage = () => {
 						making music in no time.
 					</StyledP>
 				</StyledBanner>
-
-				<div className="App">
-					<h4>This is for testing purposes!</h4>
-					<div className="flex">
-						{users.length &&
-							users.map((user) => {
-								return (
-									<div key={user.id}>
-										<p>
-											<strong>{user.first_name}</strong>
-										</p>
-										<p>{user.email}</p>
-										<img key={user.avatar} src={user.avatar} alt="" />
-									</div>
-								);
-							})}
-					</div>
-				</div>
 			</StyledWrapper>
 		</div>
 	);
