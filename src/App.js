@@ -9,12 +9,15 @@ import RentedItems from "./components/RentedItems/RentedItems";
 import Homepage from "./components/Homepage/Homepage";
 import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
+import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'
 
 import "./App.css";
 
 function App() {
 	return (
+		
 		<div className="App">
+			<CssBaseline />
 			<Header />
 
 			<Switch>
