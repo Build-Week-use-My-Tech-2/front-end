@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import data from "../data";
-
-//
+// Material-ui imports
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -46,12 +46,26 @@ const initialData = data;
 
 const Renter = (props) => {
 	const [gadgets, setGadgets] = useState([]);
+	const { id } = props.match.params;
 	const { isLoading } = props;
 	const classes = useStyles();
 
 	useEffect(() => {
 		setGadgets(initialData);
 	}, []);
+
+	const handleSubmit = () => {
+		axios.post(`/renter/${id}`)
+			.then(res => {
+				props.setItems(res.data)
+				props.history.push('/gadgets-list')
+			})
+			.catch(err => console.log(err))
+	}
+
+	if (!gadgets) {
+		return <h2>Loading item data...</h2>;
+	}
 
 	return (
 		<div>
@@ -82,9 +96,13 @@ const Renter = (props) => {
 										<CardActions>
 											<Button
 												className={classes.cardButton}
-												variant="contained"
-											>
+												variant="contained">
 												Rent this item
+											</Button>
+											<Button className={classes.cardButton}
+												variant="contained"
+												onClick={handleSubmit}>
+												Add to cart
 											</Button>
 										</CardActions>
 									</Card>

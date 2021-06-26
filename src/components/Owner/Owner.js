@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import { connect } from "react-redux";
 import data from "../data";
-
-//
+// Material-ui imports
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -45,14 +44,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 const initialData = data;
 
-const Renter = (props) => {
+const Owner = (props) => {
 	const [gadgets, setGadgets] = useState([]);
+	const { id } = props.match.params;
 	const { isLoading } = props;
 	const classes = useStyles();
 
 	useEffect(() => {
 		setGadgets(initialData);
 	}, []);
+
+	const handleEditButton = () => {
+		props.history.push(`/owner/${id}`)
+	}
+
+	const handleDeleteButton = () => {
+		axios.delete(`/owner/${id}`)
+			.then(res => {
+				props.setItems(res.data)
+				props.history.push('/gadgets-list')
+			})
+			.catch(err => console.log(err))
+	}
+
+	if (!gadgets) {
+		return <h2>Loading item data...</h2>;
+	}
+
 
 	return (
 		<div>
@@ -81,11 +99,15 @@ const Renter = (props) => {
 											</Typography>
 										</CardContent>
 										<CardActions>
-											<Button
-												className={classes.cardButton}
+											<Button className={classes.cardButton}
 												variant="contained"
-											>
+												onClick={handleDeleteButton}>
 												Delete this item
+											</Button>
+											<Button className={classes.cardButton}
+												variant="contained"
+												onClick={handleEditButton}>
+												Edit
 											</Button>
 										</CardActions>
 									</Card>
@@ -108,4 +130,4 @@ const mapStateToProps = (state) => ({
 	isLoading: state.isLoading,
 	user: state.user,
 });
-export default connect(mapStateToProps, {})(Renter);
+export default connect(mapStateToProps, {})(Owner);

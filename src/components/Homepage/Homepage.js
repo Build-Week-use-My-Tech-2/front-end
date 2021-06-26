@@ -33,7 +33,6 @@ const StyledP = styled.p`
 	justify-content: center;
 	align-items: center;
 `
-
 const StyledButton = styled.button`
 	display:inline-block;
 	font:normal normal 300 1.3em 'Open Sans';
