@@ -20,16 +20,13 @@ function App(props) {
 	return (
 		<div className="App">
 			<CssBaseline />
-
 			{props.fetchError && <Alert severity="error">{props.fetchError}</Alert>}
-
 			<div className="app-content">
 				<Header />
 				<Switch>
 					<Route exact path="/" component={Homepage} />
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
-
 					<PrivateRoute path="/owner" component={Owner} />
 					<PrivateRoute path="/renter" component={Renter} />
 					<PrivateRoute path="/rentedItems" component={RentedItems} />
@@ -37,7 +34,6 @@ function App(props) {
 					<PrivateRoute path="/editRent" component={EditRent} />
 				</Switch>
 			</div>
-
 			<Footer />
 		</div>
 	);
