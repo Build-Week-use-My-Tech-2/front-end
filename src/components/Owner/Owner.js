@@ -50,14 +50,6 @@ const Renter = (props) => {
 	const { isLoading } = props;
 	const classes = useStyles();
 
-	// useEffect(() => {
-	// 	console.log(initialData);
-	// 	axios.get("https://picsum.photos/v2/list").then((res) => {
-	// 		console.log(res.data);
-	// 		setGadgets(res.data);
-	// 	});
-	// }, []);
-
 	useEffect(() => {
 		setGadgets(initialData);
 	}, []);

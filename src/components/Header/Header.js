@@ -42,7 +42,7 @@ const Header = (props) => {
 				{isLoggedIn ? (
 					<StyledNav>
 						<a href="/">[ Home ]</a>
-						<a href="/" onClick={logout}>
+						<a href="/" onClick={handleLogout}>
 							[ Log out ]
 						</a>
 					</StyledNav>
@@ -61,4 +61,4 @@ const mapStateToProps = (state) => ({
 	isLoggedIn: state.isLoggedIn,
 });
 
-export default connect(mapStateToProps, {})(Header);
+export default connect(mapStateToProps, { logout })(Header);
