@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
-	const { isLoading, isLoggedIn, login, owner, renter } =
-		props;
+	const { isLoading, isLoggedIn, login, owner, renter } = props;
 	const [loginCredentials, setLoginCredentials] = useState(
 		initialLoginCredentials,
 	);
@@ -59,15 +58,6 @@ const Login = (props) => {
 		e.preventDefault();
 		login(loginCredentials);
 	};
-
-	// const ownerSubmit = (e) => {
-	// 	login(loginCredentials);
-	// 	setOwner();
-	// };
-	// const renterSubmit = (e) => {
-	// 	login(loginCredentials);
-	// 	setRenter();
-	// };
 
 	return (
 		<Container component="main" maxWidth="lg" className={classes.container}>

@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { logout } from "../../actions";
+
 import styled from "styled-components";
 const StyledHeader = styled.header`
 	display: flex;
@@ -25,19 +28,37 @@ const StyledNav = styled.nav`
 	margin-left: 50%;
 `;
 
-const Header = () => {
+const Header = (props) => {
+	const { isLoggedIn, logout } = props;
+
+	const handleLogout = () => {
+		logout();
+	};
+
 	return (
 		<StyledHeader>
 			<StyledHeading>Use My Tech</StyledHeading>
 			<header>
-				<StyledNav>
-					<a href="/">[ Home ]</a>
-					<a href="/signup">[ Sign Up ]</a>
-					<a href="/login">[ Log In ]</a>
-					<a href="/logout">[ Log out ]</a>
-				</StyledNav>
+				{isLoggedIn ? (
+					<StyledNav>
+						<a href="/">[ Home ]</a>
+						<a href="/" onClick={logout}>
+							[ Log out ]
+						</a>
+					</StyledNav>
+				) : (
+					<StyledNav>
+						<a href="/">[ Home ]</a>
+						<a href="/signup">[ Sign Up ]</a>
+						<a href="/login">[ Log In ]</a>
+					</StyledNav>
+				)}
 			</header>
 		</StyledHeader>
 	);
 };
-export default Header;
+const mapStateToProps = (state) => ({
+	isLoggedIn: state.isLoggedIn,
+});
+
+export default connect(mapStateToProps, {})(Header);
