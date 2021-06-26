@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import data from "../data";
-
-//
+// Material-ui imports
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -82,8 +81,7 @@ const Renter = (props) => {
 										<CardActions>
 											<Button
 												className={classes.cardButton}
-												variant="contained"
-											>
+												variant="contained">
 												Rent this item
 											</Button>
 										</CardActions>

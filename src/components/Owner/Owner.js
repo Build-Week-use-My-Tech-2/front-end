@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import data from "../data";
+// Material-ui imports
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const initialData = data;
 
-const Renter = (props) => {
+const Owner = (props) => {
 	const [gadgets, setGadgets] = useState([]);
 	const { id } = props.match.params;
 	const { isLoading } = props;
@@ -54,11 +55,11 @@ const Renter = (props) => {
 	}, []);
 
 	const handleEditButton = () => {
-		props.history.push(`/update-gadgets/${id}`)
+		props.history.push(`/owner/${id}`)
 	}
 
 	const handleDeleteButton = () => {
-		axios.delete(`http://localhost:3000/gadgets/${id}`)
+		axios.delete(`/owner/${id}`)
 			.then(res => {
 				props.setItems(res.data)
 				props.history.push('/gadgets-list')
@@ -103,7 +104,7 @@ const Renter = (props) => {
 												onClick={handleDeleteButton}>
 												Delete this item
 											</Button>
-											<Button className="md-button"
+											<Button className={classes.cardButton}
 												variant="contained"
 												onClick={handleEditButton}>
 												Edit
@@ -129,4 +130,4 @@ const mapStateToProps = (state) => ({
 	isLoading: state.isLoading,
 	user: state.user,
 });
-export default connect(mapStateToProps, {})(Renter);
+export default connect(mapStateToProps, {})(Owner);
